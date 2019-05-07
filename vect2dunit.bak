@@ -1,0 +1,23 @@
+unit Vect2DUnit;
+
+interface
+
+TYPE vect2D=RECORD
+	posx:integer;
+	posy:integer;
+END;
+
+implementation
+
+function initvect2D(x,y:integer):vect2D
+//BUT : Créer un vect 2D.
+//ENTREE : Les valeurs "x" et "y" du vecteur.
+//SORTIE : Le vecteur 2D.
+VAR vect2Dinit : vect2D;
+BEGIN
+	vect2Dinit.posx:=x;
+	vect2Dinit.posy:=y;
+	initvect2D:=vect2Dinit;
+END;
+
+END.
