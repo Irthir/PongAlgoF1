@@ -12,7 +12,11 @@ procedure setposy(y:integer; var position:vect2D);
 function getposx(position:vect2D):integer;
 function getposy(position:vect2D):integer;
 
-//function initvect2D(x,y:integer):vect2D;
+function addVect(vecteur1,vecteur2 : vect2D):vect2D;
+function sousVect(vecteur1,vecteur2 : vect2D):vect2D;
+function prodparScal(a:integer;vecteur1 :vect2D):vect2D;
+function prodScal(vecteur1,vecteur2:vect2D):integer;
+function prodVect(vecteur1,vecteur2:vect2D):vect2D;
 
 implementation
 
@@ -48,18 +52,66 @@ BEGIN
 	getposy:=position.posy;
 END;
 
-//Fonction initvect2D obsolète.
-{
-function initvect2D(x,y:integer):vect2D;
-//BUT : Créer un vect 2D.
-//ENTREE : Les valeurs "x" et "y" du vecteur.
-//SORTIE : Le vecteur 2D.
-VAR vect2Dinit : vect2D;
+
+
+function addVect(vecteur1,vecteur2 : vect2D):vect2D;
+//BUT : Additionner deux vecteurs et donner leur somme.
+//ENTREE : Deux vecteur à additionner.
+//SORTIE : Un vecteur somme.
+VAR vectsomme:vect2D;
 BEGIN
-	vect2Dinit.posx:=x;
-	vect2Dinit.posy:=y;
-	initvect2D:=vect2Dinit;
+	setposx(getposx(vecteur1)+getposx(vecteur2),vectsomme);
+	setposy(getposy(vecteur1)+getposy(vecteur2),vectsomme);
+	addVect:=vectsomme;
 END;
+
+function sousVect(vecteur1,vecteur2 : vect2D):vect2D;
+//BUT : Soustraire un vecteur à un autre donner leur différence.
+//ENTREE : Deux vecteur à soustraire.
+//SORTIE : Un vecteur différence.
+VAR vectdiff:vect2D;
+BEGIN
+	setposx(getposx(vecteur1)-getposx(vecteur2),vectdiff);
+	setposy(getposy(vecteur1)-getposy(vecteur2),vectdiff);
+	sousVect:=vectdiff;
+END;
+
+function prodparScal(a:integer;vecteur1 :vect2D):vect2D;
+//BUT : Multiplier un vecteur par un entier "a".
+//ENTREE : Le vecteur et l'entier "a".
+//SORTIE : Le vecteur produit.
+VAR vectprod:vect2D;
+BEGIN
+	setposx(getposx(vecteur1)*a,vectprod);
+	setposy(getposy(vecteur1)*a,vectprod);
+	prodparScal:=vectprod;
+END;
+
+function prodScal(vecteur1,vecteur2:vect2D):integer;
+//BUT : Multiplier deux scalaires.
+//ENTREE : Les deux vecteurs.
+//SORTIE : L'entier produit.
+BEGIN
+	prodScal:=(getposx(vecteur1)*getposx(vecteur2))+(getposy(vecteur1)*getposy(vecteur2));
+END;
+
+function prodVect(vecteur1,vecteur2:vect2D):vect2D;
+//BUT : Multiplier deux vecteurs en considérant la dimension Z comme égale à 1.
+//ENTREE : Les deux vecteurs 2D.
+//SORTIE : Le vecteur 2D, en ignorant Z, produit.
+VAR vectprodvect:vect2D;
+BEGIN
+	setposx(getposy(vecteur1)-getposy(vecteur2),vectprodvect);
+	setposy(getposx(vecteur2)-getposx(vecteur1),vectprodvect);
+	prodVect:=vectprodvect;
+END;
+
+{
+addition : (X1 Y1) + (X2 Y2) = (X1+X2 Y1+Y2)
+soustraction : (X1 Y1) - (X2 Y2) = (X1-X2 Y1-Y2)
+produit par un scalaire : (X1 Y1)xA = (A*X1 A*Y1)
+produit scalaire : (X1 Y1) . (X2 X2) = X1*X2 + Y1*Y2
+produit vectoriel (en considérant Z=1 et en ignorant le Z du vecteur produit) : (X1 Y1) * (X2 Y2) = (Y1-Y2 X2-X1)
 }
 
 END.

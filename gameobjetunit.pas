@@ -14,8 +14,6 @@ procedure setpos(position : vect2D; var obj:gameObjet);
 function gettexture(obj:gameObjet):integer;
 function getpos(obj:gameObjet):vect2D;
 
-//function initGameObjet(x,y,textu:integer):gameObjet;
-
 implementation
 
 procedure settexture(texture:integer; var obj:gameObjet);
@@ -49,19 +47,5 @@ function getpos(obj:gameObjet):vect2D;
 BEGIN
 	getpos:=obj.position;
 END;
-
-//Fonction initGameObjetobsolète.
-{
-function initGameObjet(x,y,textu:integer):gameObjet;
-//BUT : Créer un gameobjet
-//ENTREE : Les valeurs "x" et "y" du vecteur et sa texture.
-//SORTIE : Le GameObjet.
-VAR GameObjetinit : gameObjet;
-BEGIN
-	GameObjetinit.position:=initvect2D(x,y);
-	GameObjetinit.texture:=textu;
-	initGameObjet:=GameObjetinit;
-END;
-}
 
 END.

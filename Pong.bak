@@ -1,0 +1,35 @@
+program pong;
+
+uses crt,BallUnit,GameObjetUnit,Vect2DUnit;
+
+{
+function deplacement ()
+//BUT : Déplacer un vecteur.
+//ENTREE : Un vecteur à déplacer.
+//SORTIE : Le vecteur déplacé.
+VAR vecteurdeplacement:vect2D;
+BEGIN
+
+END;
+}
+
+VAR baballe:ball;
+	vecteurtest : vect2D;
+//BUT : Tester les vecteurs de la balle.
+//ENTREE : Deux balles possédants chacune un vecteur.
+//SORTIE : Leur déplacements.
+BEGIN
+	clrscr;
+//Initialisation de la balle.
+	setposx(5,baballe.obj.position);
+	setposy(8,baballe.obj.position);
+	settexture(1,baballe.obj);
+	setvelocite(2,baballe);
+	setcouleur(3,baballe);
+
+	Writeln('La balle a une position (',getposx(baballe.obj.position),' ',getposy(baballe.obj.position)').');
+	Writeln('La balle a une texture ',gettexture(baballe.obj),'.');
+	Writeln('La balle a une vélocitée ',getvelocite(baballe),'.');
+	Writeln('La balle a une couleur ',getcouleur(baballe),'.');
+	Readln;
+END.
